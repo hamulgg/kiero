@@ -192,6 +192,9 @@ kiero::Status::Enum kiero::init(RenderType::Enum _renderType, FILE* outputFile =
 				device->Release();
 				device = NULL;
 
+				swapChain->Release();
+				swapChain = NULL;
+
 				g_renderType = RenderType::D3D9;
 
 				::DestroyWindow(window);
