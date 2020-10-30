@@ -175,9 +175,12 @@ kiero::Status::Enum kiero::init(RenderType::Enum _renderType, FILE* outputFile =
 				}
 
 				LPDIRECT3DSWAPCHAIN9 swapChain;
-				device->GetSwapChain(0, &swapChain);
-				g_swapchainTable = (uint150_t*)::calloc(4, sizeof(uint150_t));
-				::memcpy(g_swapchainTable, *(uint150_t**)device, 4 * sizeof(uint150_t));
+				if (SUCCEEDED(device->GetSwapChain(0, &swapChain))) {
+					g_swapchainTable = (uint150_t*)::calloc(4, sizeof(uint150_t));
+					::memcpy(g_swapchainTable, *(uint150_t**)swapChain, 4 * sizeof(uint150_t));
+					swapChain->Release();
+					swapChain = NULL;
+				}
 
 				g_methodsTable = (uint150_t*)::calloc(122, sizeof(uint150_t));
 				::memcpy(g_methodsTable, *(uint150_t**)device, 122 * sizeof(uint150_t));
@@ -191,9 +194,6 @@ kiero::Status::Enum kiero::init(RenderType::Enum _renderType, FILE* outputFile =
 
 				device->Release();
 				device = NULL;
-
-				swapChain->Release();
-				swapChain = NULL;
 
 				g_renderType = RenderType::D3D9;
 
