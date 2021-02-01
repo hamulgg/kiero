@@ -74,7 +74,7 @@ int kieroExampleThread()
     
     // define KIERO_USE_MINHOOK must be 1
     // the index of the required function can be found in the METHODSTABLE.txt
-    kiero::bind(42, (void**)&oEndScene, hkEndScene);
+    kiero::bind(MT::D3D9::EndScene, (void**)&oEndScene, hkEndScene);
     
     // If you just need to get the function address you can use the kiero::getMethodsTable function
     oEndScene = (EndScene)kiero::getMethodsTable()[MT::D3D9::EndScene];
