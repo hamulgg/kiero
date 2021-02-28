@@ -46,15 +46,7 @@ static kiero::RenderType::Enum g_renderType = kiero::RenderType::None;
 static uint150_t* g_methodsTable = NULL;
 static uint150_t* g_swapchainTable = NULL;
 
-void HamulPrint(FILE* outputFile, const char* format, ...) {
-	va_list args;
-	va_start(args, format);
-	vprintf_s(format, args);
-	if (outputFile) {
-		vfprintf_s(outputFile, format, args);
-	}
-	va_end(args);
-}
+void HamulPrint(FILE* outputFile, const char* format, ...);
 
 long CreateDX11DeviceAndSwapChain(void* D3D11CreateDeviceAndSwapChain, D3D_DRIVER_TYPE driverType,
 	const D3D_FEATURE_LEVEL* featureLevels, UINT featureLevelsCount, DXGI_SWAP_CHAIN_DESC* swapChainDesc,
