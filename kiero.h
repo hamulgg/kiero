@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <d3d11.h>
 
+#include "methods_table.h"
+
 #define KIERO_VERSION "1.2.10"
 
 #define KIERO_INCLUDE_D3D9   1 // 1 if you need D3D9 hook
